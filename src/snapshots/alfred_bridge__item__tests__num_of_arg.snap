@@ -4,5 +4,6 @@ expression: no_arg
 snapshot_kind: text
 ---
 {
-  "title": "Hello, World!"
+  "title": "Hello, World!",
+  "valid": true
 }

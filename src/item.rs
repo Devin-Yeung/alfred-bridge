@@ -33,7 +33,7 @@ pub struct AlfredItem {
         doc = "The title displayed in the result row. There are no options for this element and it is essential that this element is populated."
     ))]
     title: String,
-    #[builder(setter(strip_option, doc = "The subtitle displayed in the result row.",))]
+    #[builder(setter(strip_option, doc = "The subtitle displayed in the result row."))]
     subtitle: Option<String>,
     #[builder(
         setter(
@@ -42,6 +42,14 @@ pub struct AlfredItem {
         via_mutators
     )]
     arg: Option<Vec<String>>,
+    #[builder(
+        default = Some(true),
+        setter(
+            strip_option,
+            doc = "The icon displayed in the result row. There are no options for this element and it is essential that this element is populated."
+        )
+    )]
+    valid: Option<bool>,
 }
 
 #[cfg(test)]
@@ -56,6 +64,7 @@ mod tests {
             .subtitle("This is a subtitle")
             .arg("arg1")
             .arg("arg2")
+            .valid(false)
             .build();
         insta::assert_json_snapshot!(item);
     }

@@ -10,5 +10,6 @@ snapshot_kind: text
   "arg": [
     "arg1",
     "arg2"
-  ]
+  ],
+  "valid": false
 }
