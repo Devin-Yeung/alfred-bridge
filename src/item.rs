@@ -1,6 +1,17 @@
 use serde::Serialize;
 use typed_builder::TypedBuilder;
 
+#[derive(Serialize, Default)]
+pub enum Type {
+    #[default]
+    #[serde(rename = "default")]
+    Default,
+    #[serde(rename = "file")]
+    File,
+    #[serde(rename = "file:skipcheck")]
+    FileSkipCheck,
+}
+
 #[serde_with::skip_serializing_none] // must go before the serde::Serialize attribute
 #[derive(TypedBuilder, Serialize)]
 #[builder(
@@ -49,10 +60,19 @@ pub struct AlfredItem {
         )
     )]
     valid: Option<bool>,
-    #[builder(
-        setter(doc = "The `match` field enables you to define what Alfred matches against when the workflow is set to \"Alfred Filters Results\". If `match` is present, it fully replaces matching on the title property.")
-    )]
+    #[builder(setter(
+        doc = "The `match` field enables you to define what Alfred matches against when the workflow is set to \"Alfred Filters Results\". If `match` is present, it fully replaces matching on the title property."
+    ))]
     r#match: Option<String>,
+    #[builder(setter(
+        doc = "An optional but recommended string you can provide to populate into Alfred's search field if the user auto-complete's the selected result (⇥ by default)."
+    ))]
+    autocomplete: Option<String>,
+    #[builder(
+        default = Some(Type::Default),
+        setter(doc = "By specifying `\"type\": \"file\"`, Alfred treats your result as a file on your system. This allows the user to perform actions on the file like they can with Alfred's standard file filters.")
+    )]
+    r#type: Option<Type>,
 }
 
 #[cfg(test)]

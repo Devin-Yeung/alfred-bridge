@@ -11,5 +11,6 @@ snapshot_kind: text
     "arg1",
     "arg2"
   ],
-  "valid": false
+  "valid": false,
+  "type": "default"
 }
