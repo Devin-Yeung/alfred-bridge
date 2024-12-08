@@ -1,0 +1,8 @@
+---
+source: src/item.rs
+expression: no_arg
+snapshot_kind: text
+---
+{
+  "title": "Hello, World!"
+}

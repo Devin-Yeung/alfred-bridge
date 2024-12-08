@@ -1,0 +1,14 @@
+---
+source: src/item.rs
+expression: item
+snapshot_kind: text
+---
+{
+  "id": "42",
+  "title": "Hello, World!",
+  "subtitle": "This is a subtitle",
+  "arg": [
+    "arg1",
+    "arg2"
+  ]
+}
