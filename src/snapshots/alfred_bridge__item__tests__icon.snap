@@ -1,0 +1,18 @@
+---
+source: src/item.rs
+expression: items
+snapshot_kind: text
+---
+[
+  {
+    "path": "path/to/icon.png"
+  },
+  {
+    "type": "fileicon",
+    "path": "~/Desktop"
+  },
+  {
+    "type": "filetype",
+    "path": "com.apple.rtfd"
+  }
+]

@@ -12,6 +12,24 @@ pub enum Type {
     FileSkipCheck,
 }
 
+#[derive(Serialize)]
+pub enum IconType {
+    #[serde(rename = "fileicon")]
+    FileIcon,
+    #[serde(rename = "filetype")]
+    FileType,
+}
+
+#[serde_with::skip_serializing_none] // must go before the serde::Serialize attribute
+#[derive(Serialize, TypedBuilder)]
+#[builder(doc, field_defaults(default, setter(into)))]
+pub struct Icon {
+    #[builder(setter(strip_option, doc = "The type of icon to display."))]
+    r#type: Option<IconType>,
+    #[builder(setter(doc = "The path to the icon."))]
+    path: String,
+}
+
 #[serde_with::skip_serializing_none] // must go before the serde::Serialize attribute
 #[derive(TypedBuilder, Serialize)]
 #[builder(
@@ -53,6 +71,8 @@ pub struct AlfredItem {
         via_mutators
     )]
     arg: Option<Vec<String>>,
+    #[builder(setter(doc = "The icon displayed in the result row."))]
+    icon: Option<Icon>,
     #[builder(
         default = Some(true),
         setter(
@@ -78,6 +98,22 @@ pub struct AlfredItem {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn icon() {
+        let items = vec![
+            Icon::builder().path("path/to/icon.png").build(),
+            Icon::builder()
+                .r#type(IconType::FileIcon)
+                .path("~/Desktop")
+                .build(),
+            Icon::builder()
+                .r#type(IconType::FileType)
+                .path("com.apple.rtfd")
+                .build(),
+        ];
+        insta::assert_json_snapshot!(items);
+    }
 
     #[test]
     fn health_check() {
