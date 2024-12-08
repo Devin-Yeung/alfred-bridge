@@ -37,7 +37,7 @@ pub struct Icon {
     field_defaults(default, setter(strip_option, into)),
     mutators(
         // This is a custom mutator that allows us to add multiple arguments to the `arg` field.
-        fn arg(&mut self, arg: impl Into<String>) -> &mut Self {
+        pub fn arg(&mut self, arg: impl Into<String>) -> &mut Self {
             match self.arg {
                 Some(ref mut args) => {
                     args.push(arg.into());

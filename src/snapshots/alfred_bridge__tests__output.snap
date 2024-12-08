@@ -1,0 +1,22 @@
+---
+source: src/lib.rs
+expression: output
+snapshot_kind: text
+---
+{
+  "items": [
+    {
+      "title": "Hello, World!",
+      "subtitle": "This is a test subtitle.",
+      "arg": [
+        "https://example.com"
+      ],
+      "icon": {
+        "type": "fileicon",
+        "path": "icon.png"
+      },
+      "valid": true,
+      "type": "default"
+    }
+  ]
+}
