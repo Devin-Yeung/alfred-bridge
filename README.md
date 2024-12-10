@@ -25,7 +25,7 @@
 
 ```toml
 [dependencies]
-alfred-bridge = { git = "https://github.com/Devin-Yeung/alfred-bridge.git" }
+alfred-bridge = { git = "https://github.com/Devin-Yeung/alfred-bridge.git", rev = "refs/heads/master" }
 ```
 
 ## Supported Features
