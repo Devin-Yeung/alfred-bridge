@@ -1,7 +1,6 @@
 ---
 source: src/lib.rs
 expression: output
-snapshot_kind: text
 ---
 {
   "items": [
@@ -18,5 +17,9 @@ snapshot_kind: text
       "valid": true,
       "type": "default"
     }
-  ]
+  ],
+  "variables": {
+    "key2": "value2",
+    "key": "value"
+  }
 }

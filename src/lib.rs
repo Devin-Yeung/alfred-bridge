@@ -2,17 +2,19 @@
     html_logo_url = "https://raw.githubusercontent.com/Devin-Yeung/alfred-bridge/master/docs/images/alfred-bridge-logo-square.png"
 )]
 
+use crate::variable::Variable;
 use serde::Serialize;
 use typed_builder::TypedBuilder;
 
 pub mod item;
+mod variable;
 
 #[derive(Serialize, TypedBuilder)]
 #[builder(
     doc,
     field_defaults(default),
     mutators(
-        fn item(&mut self, item: item::AlfredItem) -> &mut Self {
+        pub fn item(&mut self, item: item::AlfredItem) -> &mut Self {
             self.items.push(item);
             self
         }
@@ -21,6 +23,9 @@ pub mod item;
 pub struct AlfredOutput {
     #[builder(via_mutators)]
     items: Vec<item::AlfredItem>,
+    #[builder(setter(strip_option))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    variables: Option<Variable>,
 }
 
 impl AlfredOutput {
@@ -48,6 +53,12 @@ mod tests {
                             .path("icon.png")
                             .build(),
                     )
+                    .build(),
+            )
+            .variables(
+                Variable::builder()
+                    .var("key", "value")
+                    .var("key2", "value2")
                     .build(),
             )
             .build();
