@@ -6,13 +6,43 @@
 [![APACHE Licensed][apache-badge]][apache-url]
 
 [actions-badge]: https://github.com/Devin-Yeung/alfred-bridge/actions/workflows/ci.yml/badge.svg?branch=master
+
 [actions-url]: https://github.com/Devin-Yeung/alfred-bridge/actions/workflows/ci.yml
+
 [coveralls-badge]: https://coveralls.io/repos/github/Devin-Yeung/alfred-bridge/badge.svg?branch=master
+
 [coveralls-url]: https://coveralls.io/github/Devin-Yeung/alfred-bridge?branch=master
+
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+
 [apache-badge]: https://img.shields.io/badge/license-APACHE_2.0-blue.svg
+
 [mit-url]: https://github.com/Devin-Yeung/alfred-bridge/blob/master/LICENSE-MIT
+
 [apache-url]: https://github.com/Devin-Yeung/alfred-bridge/blob/master/LICENSE-APACHE
+
+## Supported Features
+
+| Field            |      Status       |       Comment       |
+|------------------|:-----------------:|:-------------------:|
+| uid              | Fully Supported ✅ |                     |
+| title            | Fully Supported ✅ |                     |
+| subtitle         | Fully Supported ✅ |                     |
+| arg              | Fully Supported ✅ |                     |
+| icon             | Fully Supported ✅ |                     |
+| valid            | Fully Supported ✅ |                     |
+| match            | Fully Supported ✅ |                     |
+| autocomplete     | Fully Supported ✅ |                     |
+| type             | Fully Supported ✅ |                     |
+| mods             |    Planed  🗓     |                     |
+| action           |    Planed  🗓     |                     |
+| text             |    Planed  🗓     |                     |
+| quicklookurl     |    Planed  🗓     |                     |
+| session variable | Fully Supported ✅ |                     |
+| item variable    |     Planed 🗓     |                     |
+| rerun            |     Planed 🗓     |                     |
+| cache            |     Planed 🗓     | Require Alfred v5.5 |
+| result ordering  | Fully Supported ✅ |  Require Alfred v5  |
 
 ## License
 
