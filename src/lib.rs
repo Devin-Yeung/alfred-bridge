@@ -2,12 +2,15 @@
     html_logo_url = "https://raw.githubusercontent.com/Devin-Yeung/alfred-bridge/master/docs/images/alfred-bridge-logo-square.png"
 )]
 
-use crate::variable::Variable;
 use serde::Serialize;
 use typed_builder::TypedBuilder;
 
-pub mod item;
+mod item;
 mod variable;
+
+// re-export
+pub use item::*;
+pub use variable::*;
 
 #[derive(Serialize, TypedBuilder)]
 #[builder(
@@ -22,7 +25,7 @@ mod variable;
 )]
 pub struct AlfredOutput {
     #[builder(via_mutators)]
-    items: Vec<item::AlfredItem>,
+    items: Vec<AlfredItem>,
     #[builder(setter(strip_option))]
     #[serde(skip_serializing_if = "Option::is_none")]
     variables: Option<Variable>,
@@ -43,7 +46,7 @@ mod tests {
     fn test_output() {
         let output = AlfredOutput::builder()
             .item(
-                item::AlfredItem::builder()
+                AlfredItem::builder()
                     .title("Hello, World!")
                     .subtitle("This is a test subtitle.")
                     .arg("https://example.com")
