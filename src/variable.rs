@@ -1,5 +1,8 @@
+#[cfg(test)]
+use indexmap::IndexMap as Map;
 use serde::Serialize;
-use std::collections::HashMap;
+#[cfg(not(test))]
+use std::collections::HashMap as Map;
 use typed_builder::TypedBuilder;
 
 #[repr(transparent)]
@@ -17,7 +20,7 @@ use typed_builder::TypedBuilder;
 
 pub struct Variable {
     #[builder(via_mutators)]
-    variables: HashMap<String, String>,
+    variables: Map<String, String>,
 }
 
 impl Serialize for Variable {
