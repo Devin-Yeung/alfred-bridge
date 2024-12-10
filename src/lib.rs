@@ -15,7 +15,7 @@ pub use variable::*;
 #[derive(Serialize, TypedBuilder)]
 #[builder(
     doc,
-    field_defaults(default),
+    field_defaults(default, setter(strip_option)),
     mutators(
         pub fn item(&mut self, item: item::AlfredItem) -> &mut Self {
             self.items.push(item);
@@ -24,9 +24,12 @@ pub use variable::*;
     )
 )]
 pub struct AlfredOutput {
+    #[serde(rename = "skipknowledge")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default = Option::None)]
+    skip_knowledge: Option<bool>,
     #[builder(via_mutators)]
     items: Vec<AlfredItem>,
-    #[builder(setter(strip_option))]
     #[serde(skip_serializing_if = "Option::is_none")]
     variables: Option<Variable>,
 }
@@ -43,16 +46,23 @@ mod tests {
     use super::*;
 
     #[test]
+    fn output_required_only() {
+        let output = AlfredOutput::builder().build();
+        insta::assert_json_snapshot!(output)
+    }
+
+    #[test]
     fn test_output() {
         let output = AlfredOutput::builder()
+            .skip_knowledge(true)
             .item(
                 AlfredItem::builder()
                     .title("Hello, World!")
                     .subtitle("This is a test subtitle.")
                     .arg("https://example.com")
                     .icon(
-                        item::Icon::builder()
-                            .r#type(item::IconType::FileIcon)
+                        Icon::builder()
+                            .r#type(IconType::FileIcon)
                             .path("icon.png")
                             .build(),
                     )

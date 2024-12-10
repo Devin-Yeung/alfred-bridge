@@ -3,6 +3,7 @@ source: src/lib.rs
 expression: output
 ---
 {
+  "skipknowledge": true,
   "items": [
     {
       "title": "Hello, World!",
@@ -19,7 +20,7 @@ expression: output
     }
   ],
   "variables": {
-    "key2": "value2",
-    "key": "value"
+    "key": "value",
+    "key2": "value2"
   }
 }
