@@ -21,6 +21,13 @@
 
 [apache-url]: https://github.com/Devin-Yeung/alfred-bridge/blob/master/LICENSE-APACHE
 
+# Usage
+
+```toml
+[dependencies]
+alfred-bridge = { git = "https://github.com/Devin-Yeung/alfred-bridge.git" }
+```
+
 ## Supported Features
 
 | Field            |      Status       |       Comment       |
@@ -34,14 +41,14 @@
 | match            | Fully Supported ✅ |                     |
 | autocomplete     | Fully Supported ✅ |                     |
 | type             | Fully Supported ✅ |                     |
-| mods             |    Planed  🗓     |                     |
-| action           |    Planed  🗓     |                     |
-| text             |    Planed  🗓     |                     |
-| quicklookurl     |    Planed  🗓     |                     |
+| mods             |    Planned  🗓    |                     |
+| action           |    Planned  🗓    |                     |
+| text             |    Planned  🗓    |                     |
+| quicklookurl     |    Planned  🗓    |                     |
 | session variable | Fully Supported ✅ |                     |
-| item variable    |     Planed 🗓     |                     |
-| rerun            |     Planed 🗓     |                     |
-| cache            |     Planed 🗓     | Require Alfred v5.5 |
+| item variable    |    Planned 🗓     |                     |
+| rerun            |    Planned 🗓     |                     |
+| cache            |    Planned 🗓     | Require Alfred v5.5 |
 | result ordering  | Fully Supported ✅ |  Require Alfred v5  |
 
 ## License
