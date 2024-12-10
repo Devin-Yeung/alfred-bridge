@@ -5,12 +5,14 @@
 use serde::Serialize;
 use typed_builder::TypedBuilder;
 
+mod environment;
 mod file_type;
 mod icon;
 mod item;
 mod variable;
 
 // re-export
+pub use environment::*;
 pub use file_type::*;
 pub use icon::*;
 pub use item::*;
