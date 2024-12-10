@@ -56,7 +56,7 @@ pub struct AlfredItem {
     #[builder(setter(
         doc = "A unique identifier for the item. It allows Alfred to learn about the item for subsequent sorting and ordering of the user's actioned results."
     ))]
-    id: Option<String>,
+    uid: Option<String>,
     #[builder(setter(
         !strip_option,
         doc = "The title displayed in the result row. There are no options for this element and it is essential that this element is populated."
@@ -118,7 +118,7 @@ mod tests {
     #[test]
     fn health_check() {
         let item = AlfredItem::builder()
-            .id("42")
+            .uid("42")
             .title("Hello, World!")
             .subtitle("This is a subtitle")
             .arg("arg1")
