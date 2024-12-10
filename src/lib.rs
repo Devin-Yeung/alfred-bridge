@@ -21,8 +21,12 @@ pub use variable::*;
     doc,
     field_defaults(default, setter(strip_option)),
     mutators(
-        pub fn item(&mut self, item: item::AlfredItem) -> &mut Self {
-            self.items.push(item);
+        pub fn item(&mut self, item: impl Into<AlfredItem>) -> &mut Self {
+            self.items.push(item.into());
+            self
+        }
+        pub fn items(&mut self, items: impl IntoIterator<Item = impl Into<AlfredItem>>) -> &mut Self {
+            self.items.extend(items.into_iter().map(Into::into));
             self
         }
     )
@@ -52,6 +56,21 @@ mod tests {
     #[test]
     fn output_required_only() {
         let output = AlfredOutput::builder().build();
+        insta::assert_json_snapshot!(output)
+    }
+
+    #[test]
+    fn iter_items() {
+        struct Item(String);
+        impl Into<AlfredItem> for Item {
+            fn into(self) -> AlfredItem {
+                AlfredItem::builder().title(self.0).build()
+            }
+        }
+
+        let output = AlfredOutput::builder()
+            .items(vec![Item("Item 1".to_string()), Item("Item 2".to_string())])
+            .build();
         insta::assert_json_snapshot!(output)
     }
 

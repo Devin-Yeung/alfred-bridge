@@ -1,0 +1,18 @@
+---
+source: src/lib.rs
+expression: output
+---
+{
+  "items": [
+    {
+      "title": "Item 1",
+      "valid": true,
+      "type": "default"
+    },
+    {
+      "title": "Item 2",
+      "valid": true,
+      "type": "default"
+    }
+  ]
+}
