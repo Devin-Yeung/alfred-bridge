@@ -5,10 +5,14 @@
 use serde::Serialize;
 use typed_builder::TypedBuilder;
 
+mod file_type;
+mod icon;
 mod item;
 mod variable;
 
 // re-export
+pub use file_type::*;
+pub use icon::*;
 pub use item::*;
 pub use variable::*;
 

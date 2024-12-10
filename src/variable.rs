@@ -17,7 +17,7 @@ use typed_builder::TypedBuilder;
         }
     )
 )]
-
+#[derive(Default)]
 pub struct Variable {
     #[builder(via_mutators)]
     variables: Map<String, String>,
